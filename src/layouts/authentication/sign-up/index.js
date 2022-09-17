@@ -1,17 +1,4 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useState } from "react";
 
@@ -43,14 +30,14 @@ function SignUp() {
 
   return (
     <BasicLayout
-      title="Welcome!"
-      description="Use these awesome forms to login or create new account in your project for free."
+      title="Bienvenido"
+      description="Crear una nueva cuenta"
       image={curved6}
     >
       <Card>
         <SoftBox p={3} mb={1} textAlign="center">
           <SoftTypography variant="h5" fontWeight="medium">
-            Register with
+            Registrarse con
           </SoftTypography>
         </SoftBox>
         <SoftBox mb={2}>
@@ -60,7 +47,7 @@ function SignUp() {
         <SoftBox pt={2} pb={3} px={3}>
           <SoftBox component="form" role="form">
             <SoftBox mb={2}>
-              <SoftInput placeholder="Name" />
+              <SoftInput placeholder="Nombre" />
             </SoftBox>
             <SoftBox mb={2}>
               <SoftInput type="email" placeholder="Email" />
@@ -76,7 +63,7 @@ function SignUp() {
                 onClick={handleSetAgremment}
                 sx={{ cursor: "poiner", userSelect: "none" }}
               >
-                &nbsp;&nbsp;I agree the&nbsp;
+                &nbsp;&nbsp;Acepto los&nbsp;
               </SoftTypography>
               <SoftTypography
                 component="a"
@@ -85,17 +72,17 @@ function SignUp() {
                 fontWeight="bold"
                 textGradient
               >
-                Terms and Conditions
+                Terminos y Condiciones
               </SoftTypography>
             </SoftBox>
             <SoftBox mt={4} mb={1}>
               <SoftButton variant="gradient" color="dark" fullWidth>
-                sign up
+                Registrarme
               </SoftButton>
             </SoftBox>
             <SoftBox mt={3} textAlign="center">
               <SoftTypography variant="button" color="text" fontWeight="regular">
-                Already have an account?&nbsp;
+                Ya tienes una cuenta?&nbsp;
                 <SoftTypography
                   component={Link}
                   to="/authentication/sign-in"

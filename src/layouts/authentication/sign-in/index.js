@@ -1,17 +1,4 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useState } from "react";
 
@@ -40,8 +27,8 @@ function SignIn() {
 
   return (
     <CoverLayout
-      title="Welcome back"
-      description="Enter your email and password to sign in"
+      title="Bienvenido"
+      description="Ingrese su correo y contraseña para iniciar sesión"
       image={curved9}
     >
       <SoftBox component="form" role="form">
@@ -74,12 +61,12 @@ function SignIn() {
         </SoftBox>
         <SoftBox mt={4} mb={1}>
           <SoftButton variant="gradient" color="info" fullWidth>
-            sign in
+            Iniciar sesión
           </SoftButton>
         </SoftBox>
         <SoftBox mt={3} textAlign="center">
           <SoftTypography variant="button" color="text" fontWeight="regular">
-            Don&apos;t have an account?{" "}
+            No estás registrado?{" "}
             <SoftTypography
               component={Link}
               to="/authentication/sign-up"

@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useState } from "react";
 
@@ -24,54 +10,57 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
 function PlatformSettings() {
-  const [followsMe, setFollowsMe] = useState(true);
-  const [answersPost, setAnswersPost] = useState(false);
-  const [mentionsMe, setMentionsMe] = useState(true);
-  const [newLaunches, setNewLaunches] = useState(false);
-  const [productUpdate, setProductUpdate] = useState(true);
-  const [newsletter, setNewsletter] = useState(true);
+  const [viewAlarms, setAlarms] = useState(true);
+  const [armAlarms, setArmAlarms] = useState(true);
+  const [confAlarms, setconfAlarms] = useState(true);
+  const [viewCCTV, setViewCCTV] = useState(true);
+  const [viewAccess, setviewAccess] = useState(true);
+  const [openAccess, setopenAccess] = useState(true);
 
   return (
     <Card>
       <SoftBox pt={2} px={2}>
         <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-          platform settings
+          Permisos 
         </SoftTypography>
       </SoftBox>
       <SoftBox pt={1.5} pb={2} px={2} lineHeight={1.25}>
         <SoftTypography variant="caption" fontWeight="bold" color="text" textTransform="uppercase">
-          account
+          Alarmas
         </SoftTypography>
         <SoftBox display="flex" py={1} mb={0.25}>
           <SoftBox mt={0.25}>
-            <Switch checked={followsMe} onChange={() => setFollowsMe(!followsMe)} />
+            <Switch checked={viewAlarms} onChange={() => setAlarms(!viewAlarms)} />
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone follows me
+              Visualización
             </SoftTypography>
           </SoftBox>
         </SoftBox>
         <SoftBox display="flex" py={1} mb={0.25}>
           <SoftBox mt={0.25}>
-            <Switch checked={answersPost} onChange={() => setAnswersPost(!answersPost)} />
+            <Switch checked={armAlarms} onChange={() => setArmAlarms(!armAlarms)} />
           </SoftBox>
+        
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone answers on my post
+              Armado / Desarmado de alarmas
             </SoftTypography>
           </SoftBox>
         </SoftBox>
         <SoftBox display="flex" py={1} mb={0.25}>
           <SoftBox mt={0.25}>
-            <Switch checked={mentionsMe} onChange={() => setMentionsMe(!mentionsMe)} />
+            <Switch checked={confAlarms} onChange={() => setconfAlarms(!confAlarms)} />
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone mentions me
+              Configuración
             </SoftTypography>
           </SoftBox>
         </SoftBox>
+
+
         <SoftBox mt={3}>
           <SoftTypography
             variant="caption"
@@ -79,39 +68,52 @@ function PlatformSettings() {
             color="text"
             textTransform="uppercase"
           >
-            application
+            CCTV
           </SoftTypography>
         </SoftBox>
         <SoftBox display="flex" py={1} mb={0.25}>
           <SoftBox mt={0.25}>
-            <Switch checked={newLaunches} onChange={() => setNewLaunches(!newLaunches)} />
+            <Switch checked={viewCCTV} onChange={() => setViewCCTV(!viewCCTV)} />
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              New launches and projects
+              Vista en tiempo real
+            </SoftTypography>
+          </SoftBox>
+        </SoftBox>
+     
+
+        <SoftBox mt={3}>
+          <SoftTypography
+            variant="caption"
+            fontWeight="bold"
+            color="text"
+            textTransform="uppercase"
+          >
+            Control de acceso
+          </SoftTypography>
+        </SoftBox>
+        <SoftBox display="flex" py={1} mb={0.25}>
+          <SoftBox mt={0.25}>
+            <Switch checked={viewAccess} onChange={() => setviewAccess(!viewAccess)} />
+          </SoftBox>
+          <SoftBox width="80%" ml={2}>
+            <SoftTypography variant="button" fontWeight="regular" color="text">
+              Monitorear estado
             </SoftTypography>
           </SoftBox>
         </SoftBox>
         <SoftBox display="flex" py={1} mb={0.25}>
           <SoftBox mt={0.25}>
-            <Switch checked={productUpdate} onChange={() => setProductUpdate(!productUpdate)} />
+            <Switch checked={openAccess} onChange={() => setopenAccess(!openAccess)} />
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Monthly product updates
+              Abrir puerta
             </SoftTypography>
           </SoftBox>
         </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={newsletter} onChange={() => setNewsletter(!newsletter)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              Subscribe to newsletter
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
+       
       </SoftBox>
     </Card>
   );
