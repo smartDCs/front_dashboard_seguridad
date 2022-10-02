@@ -16,6 +16,7 @@ import SoftButton from "components/SoftButton";
 
 // Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
+import { authenticationService } from "../_services";
 
 // Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
@@ -24,7 +25,28 @@ function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  if (authenticationService.currentUserValue) { 
+    this.props.history.push('/dashboard');
+}
+function login(){
 
+  
+   // setStatus();
+    authenticationService.login("admin", "admin")
+        .then(
+            user => {
+                const { from } = this.props.location.state || { from: { pathname: "/dashboard" } };
+                this.props.history.push(from);
+            },
+            error => {
+                setSubmitting(false);
+                setStatus(error);
+            }
+        );
+
+
+
+}
   return (
     <CoverLayout
       title="Bienvenido"
@@ -60,8 +82,15 @@ function SignIn() {
           </SoftTypography>
         </SoftBox>
         <SoftBox mt={4} mb={1}>
-          <SoftButton variant="gradient" color="info" fullWidth>
+          <SoftButton variant="gradient" color="info" fullWidth
+          
+          onClick={() => login()}
+          
+          >
             Iniciar sesión
+
+
+
           </SoftButton>
         </SoftBox>
         <SoftBox mt={3} textAlign="center">
