@@ -87,7 +87,7 @@ function Dashboard() {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5}>
-              <ReportsBarChart
+           {/*   <ReportsBarChart
                 title="Todos los eventos de alarmas"
                 description={
                   <>
@@ -97,6 +97,7 @@ function Dashboard() {
                 chart={chart}
                 items={items}
               />
+              */}
             </Grid>
           
           </Grid>

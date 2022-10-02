@@ -114,7 +114,7 @@ function RTL() {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5}>
-              <ReportsBarChart
+            {/*  <ReportsBarChart
                 title="المستخدمين النشطين"
                 description={
                   <>
@@ -123,10 +123,10 @@ function RTL() {
                 }
                 chart={chart}
                 items={items}
-              />
+              /> */}
             </Grid>
             <Grid item xs={12} lg={7}>
-              <GradientLineChart
+             {/* <GradientLineChart
                 title="نظرة عامة على المبيعات"
                 description={
                   <SoftBox display="flex" alignItems="center">
@@ -143,7 +143,7 @@ function RTL() {
                 }
                 height="20.25rem"
                 chart={gradientLineChartData}
-              />
+              /> */}
             </Grid>
           </Grid>
         </SoftBox>
