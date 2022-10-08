@@ -20,6 +20,7 @@ function BillingInformation() {
       </SoftBox>
       <SoftBox pt={0} pb={2} px={2}>
         <SoftBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        <iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
           <Bill
               name="Camara salon 1"
               company="Instituto"
