@@ -22,7 +22,8 @@ function BillingInformation() {
         <SoftBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
         <iframe width="770" height="433" src="https://www.youtube.com/embed/rIWGcxnVIA8" title="Cómo documentar API con Swagger & Node js & Express" ></iframe>
        
-         
+        <iframe width="770" height="433" src="https://www.youtube.com/embed/rIWGcxnVIA8" title="Cómo documentar API con Swagger & Node js & Express" ></iframe>
+       
           <Bill
             name="Camara salon 2"
             company="Instituto"
