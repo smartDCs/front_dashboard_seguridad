@@ -20,7 +20,7 @@ function BillingInformation() {
       </SoftBox>
       <SoftBox pt={0} pb={2} px={2}>
         <SoftBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-        <iframe width="770" height="433" src="https://www.youtube.com/embed/rIWGcxnVIA8" title="Cómo documentar API con Swagger & Node js & Express"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="770" height="433" src="https://www.youtube.com/embed/rIWGcxnVIA8" title="Cómo documentar API con Swagger & Node js & Express" ></iframe>
        
          
           <Bill
