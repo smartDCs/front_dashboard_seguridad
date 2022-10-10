@@ -28,9 +28,40 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 
+import axios from "axios";
+import React from "react";
+import {useRef, useState, useEffect } from "react";
+import cors from"cors";
+import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
+
+  const URI_sonoff="https://backendjc.herokuapp.com/api/sonoffData";
+// leer base de datos sonoff
+
+const [data, setData] = useState('');
+const getAllData = () => {
+  axios.get(
+  "https://backendjc.herokuapp.com/api/sonoffData").then((response) => {console.log(response.data);
+  setData(response.data);}).catch((error) => {
+  console.log(error);
+  });
+  };
+
+  useEffect(() => {
+    getAllData();
+   }, []);
+/*
+const [current, setCurrent] = React.useState(null);
+
+React.useEffect(() => {
+  axios.get(URI_sonoff).then((response) => {
+    console.log(response.data);
+  });
+}, []);
+
+*/
 
   return (
     <DashboardLayout>

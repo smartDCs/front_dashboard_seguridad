@@ -4,6 +4,7 @@
   "author": "David Chicaisa",
   "license": "",
   "description": "",
+  "proxy":"https://backendjc.herokuapp.com/",
   "bugs": {
     "url": ""
   },
@@ -25,8 +26,10 @@
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "14.2.1",
+    "axios": "^1.1.2",
     "chart.js": "3.4.1",
     "chroma-js": "2.4.2",
+    "cors": "^2.8.5",
     "ewelink-api": "^3.1.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
