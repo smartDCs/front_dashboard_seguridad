@@ -30,38 +30,70 @@ import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData"
 
 import axios from "axios";
 import React from "react";
-import {useRef, useState, useEffect } from "react";
-import cors from"cors";
+import { useRef, useState, useEffect } from "react";
+import cors from "cors";
 import SoftInputRoot from "components/SoftInput/SoftInputRoot";
+import { ConstructionRounded } from "@mui/icons-material";
+import io from "socket.io-client";
+const socket=io('https://backendjc.herokuapp.com');
+//import socket from "../../components/Socket";
+
+
 function Dashboard() {
+
+
+
+  const [current, setCurrent] = useState('');
+  var [voltaje, setVoltaje] = useState(0);
+
+
+
+socket.emit('conectado',"hola desde cliente");
+
+
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 
-  const URI_sonoff="https://backendjc.herokuapp.com/api/sonoffData";
-// leer base de datos sonoff
+  // const URI_sonoff="https://backendjc.herokuapp.com/api/sonoffData";
+  // leer base de datos sonoff
+  //var voltaje=0;
 
-const [data, setData] = useState('');
-const getAllData = () => {
-  axios.get(
-  "https://backendjc.herokuapp.com/api/sonoffData").then((response) => {console.log(response.data);
-  setData(response.data);}).catch((error) => {
-  console.log(error);
-  });
-  };
+/*
+  async function getAllData() {
+
+    const data = await axios.get("https://backendjc.herokuapp.com/api/sonoffData/?format=json");
+    const index = data.data.length - 1;
+    voltaje = data.data[index].voltaje;
+    console.log(data.data[index].voltaje);
+    console.log(data.data[index].status);
+    setVoltaje(data.data[index].voltaje);
+  }
+*/
+//  var myTimer = setInterval(() => {
+ //    getAllData();
+  // console.log("leyendo api sonoff");
+//  }, 500);
 
   useEffect(() => {
-    getAllData();
-   }, []);
-/*
-const [current, setCurrent] = React.useState(null);
 
-React.useEffect(() => {
-  axios.get(URI_sonoff).then((response) => {
-    console.log(response.data);
+    socket.emit("chek_pow","");
+    socket.on("sonoff_voltaje",(arg)=>{
+      console.log(arg);
+      setVoltaje(arg);
+    });
+   // getAllData();
   });
-}, []);
 
-*/
+  /*
+  const [current, setCurrent] = React.useState(null);
+  
+  React.useEffect(() => {
+    axios.get(URI_sonoff).then((response) => {
+      console.log(response.data);
+    });
+  }, []);
+  
+  */
 
   return (
     <DashboardLayout>
@@ -73,15 +105,15 @@ React.useEffect(() => {
               <MiniStatisticsCard
                 title={{ text: "Eventos de alarmas" }}
                 count="6"
-               // percentage={{ color: "success", text: "+55%" }}
+                // percentage={{ color: "success", text: "+55%" }}
                 icon={{ color: "warning", component: "notification_important" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Voltaje de la red" }}
-                count="118V"
-                //percentage={{ color: "success", text: "+3%" }}
+                count={voltaje}
+                percentage={{ color: "success", text: "3A" }}
                 icon={{ color: "success", component: "bolt" }}
               />
             </Grid>
@@ -89,7 +121,7 @@ React.useEffect(() => {
               <MiniStatisticsCard
                 title={{ text: "Puerta" }}
                 count="Abierta"
-               // percentage={{ color: "error", text: "-2%" }}
+                // percentage={{ color: "error", text: "-2%" }}
                 icon={{ color: "info", component: "meeting_room" }}
               />
             </Grid>
@@ -118,7 +150,7 @@ React.useEffect(() => {
         <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5}>
-           {/*   <ReportsBarChart
+              {/*   <ReportsBarChart
                 title="Todos los eventos de alarmas"
                 description={
                   <>
@@ -130,10 +162,10 @@ React.useEffect(() => {
               />
               */}
             </Grid>
-          
+
           </Grid>
         </SoftBox>
-      
+
       </SoftBox>
       <Footer />
     </DashboardLayout>

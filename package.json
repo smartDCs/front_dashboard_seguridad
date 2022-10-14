@@ -4,7 +4,7 @@
   "author": "David Chicaisa",
   "license": "",
   "description": "",
-  "proxy":"https://backendjc.herokuapp.com/",
+  "proxy": "https://backendjc.herokuapp.com/",
   "bugs": {
     "url": ""
   },
@@ -40,6 +40,7 @@
     "react-scripts": "5.0.1",
     "rxjs": "^7.5.7",
     "serve": "^14.0.1",
+    "socket.io-client": "^4.5.2",
     "stylis": "4.1.1",
     "stylis-plugin-rtl": "2.1.1",
     "uuid": "8.3.2",
