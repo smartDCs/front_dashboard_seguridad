@@ -35,18 +35,20 @@ import cors from "cors";
 import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 import { ConstructionRounded } from "@mui/icons-material";
 import io from "socket.io-client";
-const socket=io('https://backendjc.herokuapp.com');
+//const socket=io('https://backendjc.herokuapp.com');
+const socket=io('http://localhost:9000');
 //import socket from "../../components/Socket";
 
 
 function Dashboard() {
 
 
-
-  const [current, setCurrent] = useState('');
+var statuspuerta='Puerta cerrada';
+  var [current, setCurrent] = useState('');
   var [voltaje, setVoltaje] = useState(0);
-
-
+  var [statusPow, setStatusPow] = useState(0);
+  var [sirena, setSirena] = useState(0);
+  var [puerta, setPuerta] = useState(0);
 
 socket.emit('conectado',"hola desde cliente");
 
@@ -73,18 +75,26 @@ socket.emit('conectado',"hola desde cliente");
  //    getAllData();
   // console.log("leyendo api sonoff");
 //  }, 500);
-
+if(puerta==1){
+  statuspuerta='Puerta Abierta';
+}
   useEffect(() => {
 
-    socket.emit("chek_pow","");
-    socket.on("sonoff_voltaje",(arg)=>{
-      console.log(arg);
-      setVoltaje(arg);
+   
+    socket.on("powData",(voltaje,current,statusPow)=>{
+      
+      setVoltaje(voltaje);
+      setCurrent(current);
+      setStatusPow(statusPow);
     });
-    socket.on("sonoff_corriente",(arg)=>{
-      console.log(arg);
-      setCurrent(arg);
+    socket.on("dualData",(statusSirena,statusPuerta)=>{
+      
+      setSirena(statusSirena);
+      setPuerta(statusPuerta);
+     
     });
+   
+    
    // getAllData();
   });
 
@@ -123,8 +133,8 @@ socket.emit('conectado',"hola desde cliente");
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Puerta" }}
-                count="Abierta"
+                title={{ text: "" }}
+                count={statuspuerta}
                 // percentage={{ color: "error", text: "-2%" }}
                 icon={{ color: "info", component: "meeting_room" }}
               />
