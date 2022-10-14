@@ -93,7 +93,8 @@ if(puerta==1){
       
       setSirena(statusSirena);
       setPuerta(statusPuerta);
-     
+     console.log('sirena ',sirena);
+     console.log('puerta ', puerta);
     });
    
     
