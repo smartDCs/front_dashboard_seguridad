@@ -116,7 +116,7 @@ socket.emit('conectado',"hola desde cliente");
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Parametros de la red" }}
-                count={voltaje}
+                count={voltaje+" V"}
                 percentage={{ color: "success", text: current+" A" }}
                 icon={{ color: "success", component: "bolt" }}
               />
