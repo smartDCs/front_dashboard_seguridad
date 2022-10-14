@@ -81,6 +81,10 @@ socket.emit('conectado',"hola desde cliente");
       console.log(arg);
       setVoltaje(arg);
     });
+    socket.on("sonoff_corriente",(arg)=>{
+      console.log(arg);
+      setCurrent(arg);
+    });
    // getAllData();
   });
 
@@ -111,9 +115,9 @@ socket.emit('conectado',"hola desde cliente");
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "Voltaje de la red" }}
+                title={{ text: "Parametros de la red" }}
                 count={voltaje}
-                percentage={{ color: "success", text: "3A" }}
+                percentage={{ color: "success", text: current+" A" }}
                 icon={{ color: "success", component: "bolt" }}
               />
             </Grid>
