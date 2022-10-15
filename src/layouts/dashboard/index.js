@@ -2,7 +2,7 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
-
+import SoftButton from "components/SoftButton";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -27,7 +27,7 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
-
+import IconButton from '@mui/material/IconButton';
 import axios from "axios";
 import React from "react";
 import { useRef, useState, useEffect } from "react";
@@ -36,23 +36,23 @@ import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 import { ConstructionRounded } from "@mui/icons-material";
 import io from "socket.io-client";
 //deploy
-const socket=io('https://backendjc.herokuapp.com');
+//const socket=io('https://backendjc.herokuapp.com');
 //debug
-//const socket=io('http://localhost:9000');
+const socket = io('http://localhost:9000');
 //import socket from "../../components/Socket";
 
 
 function Dashboard() {
 
 
-var statuspuerta='Puerta cerrada';
+  var statuspuerta = 'Puerta cerrada';
   var [current, setCurrent] = useState('');
   var [voltaje, setVoltaje] = useState(0);
   var [statusPow, setStatusPow] = useState(0);
   var [sirena, setSirena] = useState(0);
   var [puerta, setPuerta] = useState(0);
 
-socket.emit('conectado',"hola desde cliente");
+  socket.emit('conectado', "hola desde cliente");
 
 
   const { size } = typography;
@@ -62,43 +62,49 @@ socket.emit('conectado',"hola desde cliente");
   // leer base de datos sonoff
   //var voltaje=0;
 
-/*
-  async function getAllData() {
-
-    const data = await axios.get("https://backendjc.herokuapp.com/api/sonoffData/?format=json");
-    const index = data.data.length - 1;
-    voltaje = data.data[index].voltaje;
-    console.log(data.data[index].voltaje);
-    console.log(data.data[index].status);
-    setVoltaje(data.data[index].voltaje);
-  }
-*/
-//  var myTimer = setInterval(() => {
- //    getAllData();
+  /*
+    async function getAllData() {
+  
+      const data = await axios.get("https://backendjc.herokuapp.com/api/sonoffData/?format=json");
+      const index = data.data.length - 1;
+      voltaje = data.data[index].voltaje;
+      console.log(data.data[index].voltaje);
+      console.log(data.data[index].status);
+      setVoltaje(data.data[index].voltaje);
+    }
+  */
+  //  var myTimer = setInterval(() => {
+  //    getAllData();
   // console.log("leyendo api sonoff");
-//  }, 500);
-if(puerta==1){
-  statuspuerta='Puerta Abierta';
-}
+  //  }, 500);
+
+  function changeState(channel) {
+    console.log('change state');
+    socket.emit('toggleChannel', channel);
+  }
+
+  if (puerta == 1) {
+    statuspuerta = 'Puerta Abierta';
+  }
   useEffect(() => {
 
-   
-    socket.on("powData",(voltaje,current,statusPow)=>{
-      
+
+    socket.on("powData", (voltaje, current, statusPow) => {
+
       setVoltaje(voltaje);
       setCurrent(current);
       setStatusPow(statusPow);
     });
-    socket.on("dualData",(statusSirena,statusPuerta)=>{
-      
+    socket.on("dualData", (statusSirena, statusPuerta) => {
+
       setSirena(statusSirena);
       setPuerta(statusPuerta);
-     console.log('sirena ',sirena);
-     console.log('puerta ', puerta);
+      console.log('sirena ', sirena);
+      console.log('puerta ', puerta);
     });
-   
-    
-   // getAllData();
+
+
+    // getAllData();
   });
 
   /*
@@ -123,33 +129,43 @@ if(puerta==1){
                 title={{ text: "Eventos de alarmas" }}
                 count="6"
                 // percentage={{ color: "success", text: "+55%" }}
-                icon={{ color: "warning", component: "notification_important" }}
+              
+                componente={ <IconButton fontSize="small" color="warning" onClick={()=>changeState(2)}>  <Icon>notification_important</Icon></IconButton>}
+                    
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Parametros de la red" }}
-                count={voltaje+" V"}
-                percentage={{ color: "success", text: current+" A" }}
-                icon={{ color: "success", component: "bolt" }}
+                count={voltaje + " V"}
+                percentage={{ color: "success", text: current + " A" }}
+               
+                componente={ <IconButton fontSize="small" color="success" onClick={()=>changeState(2)}>  <Icon>bolt</Icon></IconButton>}
+                    
               />
+              
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "" }}
-                count={statuspuerta}
-                // percentage={{ color: "error", text: "-2%" }}
-                icon={{ color: "info", component: "meeting_room" }}
-              />
+             
+              
+                  <MiniStatisticsCard
+                    title={{ text: "" }}
+                    count={statuspuerta}
+                    // percentage={{ color: "error", text: "-2%" }}
+                
+                    componente={ <IconButton fontSize="small" color="info" onClick={()=>changeState(2)}>  <Icon>meeting_room</Icon></IconButton>}
+                    
+                  />
+  
+            
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Cámaras" }}
                 count="En línea"
-                icon={{
-                  color: "error",
-                  component: "videocam",
-                }}
+              
+                componente={ <IconButton fontSize="small" color="error" onClick={()=>changeState(2)}>  <Icon>videocam</Icon></IconButton>}
+             
               />
             </Grid>
           </Grid>

@@ -1,31 +1,20 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
-
+import SoftButton from "components/SoftButton";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction }) {
+function MiniStatisticsCard({ bgColor, title, count, percentage, direction,componente }) {
   return (
     <Card>
       <SoftBox bgColor={bgColor} variant="gradient">
@@ -35,8 +24,8 @@ function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction
               <Grid item>
                 <SoftBox
                   variant="gradient"
-                  bgColor={bgColor === "white" ? icon.color : "white"}
-                  color={bgColor === "white" ? "white" : "dark"}
+                //  bgColor={bgColor === "white" }
+                  color={bgColor === "dark" ? "white" : "dark"}
                   width="3rem"
                   height="3rem"
                   borderRadius="md"
@@ -45,9 +34,7 @@ function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction
                   alignItems="center"
                   shadow="md"
                 >
-                  <Icon fontSize="small" color="inherit">
-                    {icon.component}
-                  </Icon>
+                {componente}
                 </SoftBox>
               </Grid>
             ) : null}
@@ -78,8 +65,8 @@ function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction
               <Grid item xs={4}>
                 <SoftBox
                   variant="gradient"
-                  bgColor={bgColor === "white" ? icon.color : "white"}
-                  color={bgColor === "white" ? "white" : "dark"}
+                //  bgColor={bgColor === "white" }
+                  color={bgColor === "dark" ? "white" : "dark"}
                   width="3rem"
                   height="3rem"
                   marginLeft="auto"
@@ -89,9 +76,9 @@ function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction
                   alignItems="center"
                   shadow="md"
                 >
-                  <Icon fontSize="small" color="inherit">
-                    {icon.component}
-                  </Icon>
+                  {componente}
+                 
+                 
                 </SoftBox>
               </Grid>
             ) : null}
@@ -146,11 +133,12 @@ MiniStatisticsCard.propTypes = {
     ]),
     text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
-  icon: PropTypes.shape({
-    color: PropTypes.oneOf(["primary", "secondary", "info", "success", "warning", "error", "dark"]),
-    component: PropTypes.node.isRequired,
-  }).isRequired,
+  
   direction: PropTypes.oneOf(["right", "left"]),
+
+ componente:PropTypes.node,
+
+
 };
 
 export default MiniStatisticsCard;
