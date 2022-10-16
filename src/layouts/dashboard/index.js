@@ -36,9 +36,9 @@ import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 import { ConstructionRounded } from "@mui/icons-material";
 import io from "socket.io-client";
 //deploy
-//const socket=io('https://backendjc.herokuapp.com');
+const socket=io('https://backendjc.herokuapp.com');
 //debug
-const socket = io('http://localhost:9000');
+//const socket = io('http://localhost:9000');
 //import socket from "../../components/Socket";
 
 
