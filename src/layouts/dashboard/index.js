@@ -6,6 +6,7 @@ import SoftButton from "components/SoftButton";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 // Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -36,7 +37,7 @@ import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 import { ConstructionRounded } from "@mui/icons-material";
 import io from "socket.io-client";
 //deploy
-const socket=io('https://backendjc.herokuapp.com');
+const socket = io('https://backendjc.herokuapp.com');
 //debug
 //const socket = io('http://localhost:9000');
 //import socket from "../../components/Socket";
@@ -129,9 +130,16 @@ function Dashboard() {
                 title={{ text: "Eventos de alarmas" }}
                 count="6"
                 // percentage={{ color: "success", text: "+55%" }}
-              
-                componente={ <IconButton fontSize="small" color="warning" onClick={()=>changeState(2)}>  <Icon>notification_important</Icon></IconButton>}
-                    
+
+                componente={
+                  <Link to="/alarms">
+                    <IconButton fontSize="small" color="warning" onClick={() => changeState(2)}>
+                      <Icon>notification_important</Icon>
+                    </IconButton>
+                  </Link>
+
+                }
+
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
@@ -139,33 +147,39 @@ function Dashboard() {
                 title={{ text: "Parametros de la red" }}
                 count={voltaje + " V"}
                 percentage={{ color: "success", text: current + " A" }}
-               
-                componente={ <IconButton fontSize="small" color="success" onClick={()=>changeState(2)}>  <Icon>bolt</Icon></IconButton>}
-                    
+
+                componente={<IconButton fontSize="small" color="success" onClick={() => changeState(2)}>  <Icon>bolt</Icon></IconButton>}
+
               />
-              
+
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
-             
-              
-                  <MiniStatisticsCard
-                    title={{ text: "" }}
-                    count={statuspuerta}
-                    // percentage={{ color: "error", text: "-2%" }}
-                
-                    componente={ <IconButton fontSize="small" color="info" onClick={()=>changeState(2)}>  <Icon>meeting_room</Icon></IconButton>}
-                    
-                  />
-  
-            
+
+
+              <MiniStatisticsCard
+                title={{ text: "" }}
+                count={statuspuerta}
+                // percentage={{ color: "error", text: "-2%" }}
+
+                componente={<IconButton fontSize="small" color="info" onClick={() => changeState(2)}>  <Icon>meeting_room</Icon></IconButton>}
+
+              />
+
+
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Cámaras" }}
                 count="En línea"
-              
-                componente={ <IconButton fontSize="small" color="error" onClick={()=>changeState(2)}>  <Icon>videocam</Icon></IconButton>}
-             
+
+                componente={
+                  <Link to="/cctv">
+                    <IconButton fontSize="small" color="error" onClick={() => changeState(2)}>
+                      <Icon>videocam</Icon>
+                    </IconButton>
+                  </Link>
+                }
+
               />
             </Grid>
           </Grid>

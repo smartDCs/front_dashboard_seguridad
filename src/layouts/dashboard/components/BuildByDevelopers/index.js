@@ -35,7 +35,7 @@ function BuildByDevelopers() {
               </SoftBox>
               <SoftTypography
                 component="a"
-                href="#"
+                href="/cctv"
                 variant="button"
                 color="text"
                 fontWeight="medium"
