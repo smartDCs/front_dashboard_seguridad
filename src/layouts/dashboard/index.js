@@ -37,9 +37,9 @@ import SoftInputRoot from "components/SoftInput/SoftInputRoot";
 import { ConstructionRounded } from "@mui/icons-material";
 import io from "socket.io-client";
 //deploy
-//const socket = io('https://backendjc.herokuapp.com');
+const socket = io('https://backendjc.herokuapp.com');
 //debug
-const socket = io('http://localhost:9000');
+//const socket = io('http://localhost:9000');
 //import socket from "../../components/Socket";
 
 
@@ -52,28 +52,29 @@ function Dashboard() {
   var [statusPow, setStatusPow] = useState(0);
   var [sirena, setSirena] = useState(0);
   var [puerta, setPuerta] = useState(0);
-
+  var [count_alarms, setCount_alarms] = useState(0);
   socket.emit('conectado', "hola desde cliente");
 
 
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
-
-  // const URI_sonoff="https://backendjc.herokuapp.com/api/sonoffData";
-  // leer base de datos sonoff
-  //var voltaje=0;
-
-  /*
-    async function getAllData() {
+//debug
+  // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+  //deploy
+  const URI_alarms="https://backendjc.herokuapp.com/api/alarmsData?format=json";
   
-      const data = await axios.get("https://backendjc.herokuapp.com/api/sonoffData/?format=json");
-      const index = data.data.length - 1;
-      voltaje = data.data[index].voltaje;
-      console.log(data.data[index].voltaje);
-      console.log(data.data[index].status);
-      setVoltaje(data.data[index].voltaje);
+  // leer base de datos sonoff
+  //var count_alarms=0;
+
+  
+    async function getAlarms() {
+  
+      const data = await axios.get(URI_alarms);
+      //count_alarms = data.data.length ;
+     console.log("cantidad de alarmas ",data.data.length);
+      setCount_alarms(data.data.length);
     }
-  */
+  
   //  var myTimer = setInterval(() => {
   //    getAllData();
   // console.log("leyendo api sonoff");
@@ -105,7 +106,7 @@ function Dashboard() {
     });
 
 
-    // getAllData();
+     getAlarms();
   });
 
   /*
@@ -128,7 +129,7 @@ function Dashboard() {
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Eventos de alarmas" }}
-                count="6"
+                count={count_alarms}
                 // percentage={{ color: "success", text: "+55%" }}
 
                 componente={

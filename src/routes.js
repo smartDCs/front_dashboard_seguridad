@@ -21,6 +21,7 @@ import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import Cube from "examples/Icons/Cube";
+import { Bolt } from "@mui/icons-material";
 
 const routes = [
   {

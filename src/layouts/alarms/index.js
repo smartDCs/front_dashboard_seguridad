@@ -32,9 +32,10 @@ const muiCache = createCache({
   key: "mui-datatables",
   prepend: true
 });
-
-const URI_alarms = "http://localhost:9000/api/alarmsData";
-
+//debug
+//const URI_alarms = "http://localhost:9000/api/alarmsData";
+//deploy
+const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData";
 
 // encabezado de las columnas
 const columns = [
