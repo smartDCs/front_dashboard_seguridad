@@ -32,10 +32,10 @@ const muiCache = createCache({
   key: "mui-datatables",
   prepend: true
 });
-
-const URI_alarms = "http://localhost:9000/api/sonoffData";
-
-
+//debug
+//const URI_sonoff = "http://localhost:9000/api/sonoffData";
+//deploy
+const URI_sonoff = "https://backendjc.herokuapp.com/api/sonoffData";
 // encabezado de las columnas
 const columns = [
  
@@ -132,7 +132,7 @@ function Power() {
 
   async function getAlarms() {
 
-    const res = await axios.get(URI_alarms);
+    const res = await axios.get(URI_sonoff);
     setFilas(res.data);
 
 
