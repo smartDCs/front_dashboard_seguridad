@@ -3,6 +3,7 @@
 // Soft UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
 import Alarmas from "layouts/alarms";
+import Power from "layouts/power";
 import AccessControl from "layouts/access";
 import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
@@ -38,6 +39,15 @@ const routes = [
     route: "/alarms",
     icon: <NotificationImportantIcon size="12px" />,
     component: <Alarmas />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Consumo de energía",
+    key: "power",
+    route: "/power",
+    icon: <NotificationImportantIcon size="12px" />,
+    component: <Power />,
     noCollapse: true,
   },
   {
