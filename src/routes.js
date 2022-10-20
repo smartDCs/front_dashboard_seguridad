@@ -21,7 +21,6 @@ import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import Cube from "examples/Icons/Cube";
-import { Bolt } from "@mui/icons-material";
 
 const routes = [
   {
@@ -38,7 +37,7 @@ const routes = [
     name: "Alarmas",
     key: "alarms",
     route: "/alarms",
-    icon: <Bolt size="12px" />,
+    icon: <NotificationImportantIcon size="12px" />,
     component: <Alarmas />,
     noCollapse: true,
   },
@@ -47,7 +46,7 @@ const routes = [
     name: "Consumo de energía",
     key: "power",
     route: "/power",
-    icon: <NotificationImportantIcon size="12px" />,
+    icon: <Bolt size="12px" />,
     component: <Power />,
     noCollapse: true,
   },
