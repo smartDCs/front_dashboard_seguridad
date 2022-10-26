@@ -59,9 +59,9 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 //debug
-  // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+   const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
   //deploy
-  const URI_alarms="https://backendjc.herokuapp.com/api/alarmsData?format=json";
+  //const URI_alarms="https://backendjc.herokuapp.com/api/alarmsData?format=json";
   
   // leer base de datos sonoff
   //var count_alarms=0;
@@ -134,7 +134,7 @@ function Dashboard() {
 
                 componente={
                   <Link to="/alarms">
-                    <IconButton fontSize="small" color="warning" onClick={() => changeState(2)}>
+                    <IconButton fontSize="small" color="warning" >
                       <Icon>notification_important</Icon>
                     </IconButton>
                   </Link>
