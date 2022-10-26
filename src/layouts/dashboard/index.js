@@ -59,26 +59,23 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
 //debug
-   const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+   //const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
   //deploy
-  //const URI_alarms="https://backendjc.herokuapp.com/api/alarmsData?format=json";
+  const URI_alarms="https://backendjc.herokuapp.com/api/alarmsData?format=json";
   
   // leer base de datos sonoff
-  //var count_alarms=0;
+
 
   
     async function getAlarms() {
   
       const data = await axios.get(URI_alarms);
-      //count_alarms = data.data.length ;
+   
      console.log("cantidad de alarmas ",data.data.length);
       setCount_alarms(data.data.length);
     }
   
-  //  var myTimer = setInterval(() => {
-  //    getAllData();
-  // console.log("leyendo api sonoff");
-  //  }, 500);
+ 
 
   function changeState(channel) {
     console.log('change state');
