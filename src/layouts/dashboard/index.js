@@ -22,19 +22,17 @@ import typography from "assets/theme/base/typography";
 // Dashboard layout components
 import BuildByDevelopers from "layouts/dashboard/components/BuildByDevelopers";
 import WorkWithTheRockets from "layouts/dashboard/components/WorkWithTheRockets";
-import Projects from "layouts/dashboard/components/Projects";
-import OrderOverview from "layouts/dashboard/components/OrderOverview";
+
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
+;
 import IconButton from '@mui/material/IconButton';
 import axios from "axios";
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import cors from "cors";
-import SoftInputRoot from "components/SoftInput/SoftInputRoot";
-import { ConstructionRounded } from "@mui/icons-material";
+
 import io from "socket.io-client";
 //deploy
 const socket = io('https://backendjc.herokuapp.com');
