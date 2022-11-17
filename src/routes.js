@@ -4,8 +4,7 @@
 import Dashboard from "layouts/dashboard";
 import Alarmas from "layouts/alarms";
 import Power from "layouts/power";
-import AccessControl from "layouts/access";
-import RTL from "layouts/rtl";
+
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
@@ -14,13 +13,13 @@ import CCTV from "layouts/cctv";
 
 import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import NoMeetingRoomIcon from '@mui/icons-material/NoMeetingRoom';
+
 import Shop from "examples/Icons/Shop";
-import Settings from "examples/Icons/Settings";
+
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
-import Cube from "examples/Icons/Cube";
+
 import { Bolt } from "@mui/icons-material";
 
 const routes = [
@@ -60,6 +59,7 @@ const routes = [
     component: <CCTV />,
     noCollapse: true,
   },
+  /*
   {
     type: "collapse",
     name: "Control de acceso",
@@ -68,7 +68,7 @@ const routes = [
     icon: <NoMeetingRoomIcon size="12px" />,
     component: <AccessControl />,
     noCollapse: true,
-  },
+  },*/
   { type: "title", title: "Account Pages", key: "account-pages" },
   {
     type: "collapse",

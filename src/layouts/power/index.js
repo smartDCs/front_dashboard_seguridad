@@ -22,8 +22,7 @@ import { createTheme } from "@mui/material/styles";
 
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import movimiento from "assets/images/movimiento.png";
-import incendio from "assets/images/fire.png";
+
 import { useState, useEffect } from 'react';
 
 

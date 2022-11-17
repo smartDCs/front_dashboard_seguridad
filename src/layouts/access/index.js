@@ -127,7 +127,7 @@ function AccessControl() {
                   fontWeight={fontWeightMedium}
                   lineHeight={1}
                 >
-                  28&deg;C
+                  38&deg;C
                 </SoftBox>
                 <SoftTypography variant="h6" fontWeight="medium" textTransform="uppercase">
                   cloudy
