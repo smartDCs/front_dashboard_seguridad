@@ -92,9 +92,7 @@ console.log("voltaje = ",voltaje)
   });
   socket.emit("getPow");
   useEffect(() => {
-    
-   
-  
+      
     getAlarms();
    // getPow();
   }, []);

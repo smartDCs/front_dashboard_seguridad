@@ -23,11 +23,9 @@ import { createTheme } from "@mui/material/styles";
 
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import movimiento from "assets/images/movimiento.png";
-import incendio from "assets/images/fire.png";
+
 import { useState, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import io from "socket.io-client";
 
@@ -199,22 +197,20 @@ console.log(
 
     //  setFilas(filas1);
   }
+  socket.on("dualData", (statusSirena, statusPuerta) => {
 
+    setSirena(statusSirena);
+    setPuerta(statusPuerta);
+    console.log('sirena ', sirena);
+    console.log('puerta ', puerta);
+  });
   useEffect(() => {
-
-    socket.on("dualData", (statusSirena, statusPuerta) => {
-
-      setSirena(statusSirena);
-      setPuerta(statusPuerta);
-      console.log('sirena ', sirena);
-      console.log('puerta ', puerta);
-    });
 
     getAlarms();
 
     // console.log('array filas ', filas);
 
-  }, []);
+  });
 
 
 
