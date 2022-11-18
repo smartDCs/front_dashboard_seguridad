@@ -143,7 +143,7 @@ function Power() {
 
     // console.log('array filas ', filas);
 
-  }, []);
+  });
 
 
   
