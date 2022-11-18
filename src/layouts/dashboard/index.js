@@ -48,7 +48,7 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
   //debug
- // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+  // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
   //deploy
   const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData?format=json";
 
@@ -57,7 +57,7 @@ function Dashboard() {
   async function getAlarms() {
     const data = await axios.get(URI_alarms);
 
-   // console.log("cantidad de alarmas ", data.data.length);
+    // console.log("cantidad de alarmas ", data.data.length);
     setCount_alarms(data.data.length);
   }
 
@@ -81,8 +81,8 @@ function Dashboard() {
   socket.on("dualData", (statusSirena, statusPuerta) => {
     setSirena(statusSirena);
     setPuerta(statusPuerta);
-   // console.log("sirena ", sirena);
-   // console.log("puerta ", puerta);
+    // console.log("sirena ", sirena);
+    // console.log("puerta ", puerta);
   });
   socket.on("powData", (voltaje, current, statusPow) => {
     console.log("voltaje = ", voltaje);
@@ -134,10 +134,12 @@ function Dashboard() {
                 count={voltaje + " V"}
                 percentage={{ color: "success", text: current + " A" }}
                 componente={
-                  <IconButton fontSize="small" color="success" onClick={() => changeState(2)}>
-                    {" "}
-                    <Icon>bolt</Icon>
-                  </IconButton>
+                  <Link to="/power">
+                    <IconButton fontSize="small" color="success" onClick={() => changeState(2)}>
+                      {" "}
+                      <Icon>bolt</Icon>
+                    </IconButton>
+                  </Link>
                 }
               />
             </Grid>
@@ -161,7 +163,7 @@ function Dashboard() {
                 count="En línea"
                 componente={
                   <Link to="/cctv">
-                    <IconButton fontSize="small" color="error" onClick={() => changeState(2)}>
+                    <IconButton fontSize="small" color="error">
                       <Icon>videocam</Icon>
                     </IconButton>
                   </Link>

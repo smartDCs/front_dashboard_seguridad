@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
 import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import MUIDataTable from "mui-datatables";
-import Switch from "@material-ui/core/Switch";
+import Switch from '@mui/material/Switch';
 
 import axios from "axios";
 
@@ -75,23 +75,31 @@ const columns = [
       filter: true,
       sort: true,
       filterOptions: { fullWidth: true },
-      customBodyRender: (value) => {
-        if (value) {
+      customBodyRender: (value, tableMeta, updateValue) => {
+			
+			  
+       if (value) {
           return (
             <div style={{ color: "white", backgroundColor: "#ED4713" }}>
-              <Switch checked={value} color="default" />
-              No ACK
+             <Switch checked={value} color="default" />
+           
+             No ACK
             </div>
           );
         } else {
           return (
             <div style={{ color: "white", backgroundColor: "green" }}>
-              <Switch checked={value} />
+              <Switch checked={value} color="default" />
               ACK
             </div>
           );
         }
       },
+
+   
+     
+
+
     },
   },
 ];
@@ -153,7 +161,7 @@ function Alarmas() {
     tableBodyHeight,
     tableBodyMaxHeight,
     onTableChange: (action, state) => {
-      //console.log(action);
+      console.log(action);
       console.dir(state);
     },
 
@@ -190,7 +198,7 @@ function Alarmas() {
         delete: "Delete",
         deleteAria: "Delete Selected Rows",
       },
-    },
+    }
   };
 
   const [filas, setFilas] = useState([]);
