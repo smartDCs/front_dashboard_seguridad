@@ -13,7 +13,7 @@ import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
 import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import MUIDataTable from "mui-datatables";
-
+import Switch from "@material-ui/core/Switch";
 
 import axios from "axios";
 
@@ -76,8 +76,33 @@ const columns = [
     options: {
       filter: true,
       sort: false,
-      filterOptions: { fullWidth: true }
+      filterOptions: { fullWidth: true },
+      customBodyRender: (value, tableMeta, updateValue) => {
+        if(value){
+          return (
+            <div style={{ color:"white", backgroundColor:'#ED4713'}}>
+              <Switch checked={value}     
+               color="default"           
+              />
+             No ACK
+            </div>
+
+          );
+        }
+        else{
+          return (
+            <div style={{ color:"white", backgroundColor:"green"}}>
+              <Switch checked={value}                      
+              />
+             ACK
+            </div>
+
+          );
+        }
+        
+      }
     }
+
   },
 ];
 
