@@ -81,11 +81,11 @@ function Power() {
     responsive,
     tableBodyHeight,
     tableBodyMaxHeight,
-    onTableChange: (action, state) => {
+ /*   onTableChange: (action, state) => {
       console.log(action);
       console.dir(state);
     },
-
+*/
     textLabels: {
       body: {
         noMatch: "No se encontraron coincidencias",

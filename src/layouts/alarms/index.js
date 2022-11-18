@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
 import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import MUIDataTable from "mui-datatables";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 
 import axios from "axios";
 
@@ -41,6 +41,16 @@ const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData";
 
 // encabezado de las columnas
 const columns = [
+  {
+    name: "_id",
+    label: "ID",
+    options: {
+      filter: false,
+      sort: true,
+      display: false,
+      filterOptions: { fullWidth: true },
+    },
+  },
   {
     name: "type",
     label: "Detalle",
@@ -76,14 +86,35 @@ const columns = [
       sort: true,
       filterOptions: { fullWidth: true },
       customBodyRender: (value, tableMeta, updateValue) => {
-			
-			  
-       if (value) {
+        const handleChange = (event) => {
+          console.log(tableMeta.rowData[0]);
+          //setChecked(event.target.checked);
+          console.log("cambio de estado");
+          const id = tableMeta.rowData[0];
+          const data = {
+            status: 0,
+          };
+          axios
+            .put("https://backendjc.herokuapp.com/api/alarmsData/" + id, data)
+            .then(function (response) {
+              // console.log(response.data)
+            })
+            .catch(function (error) {
+              console.log(error);
+              websocket();
+            });
+        };
+
+        if (value) {
           return (
             <div style={{ color: "white", backgroundColor: "#ED4713" }}>
-             <Switch checked={value} color="default" />
-           
-             No ACK
+              <Switch
+                checked={value}
+                color="default"
+                onChange={handleChange}
+                // inputProps={{ 'aria-label': 'controlled' }}
+              />
+              No ACK
             </div>
           );
         } else {
@@ -95,11 +126,6 @@ const columns = [
           );
         }
       },
-
-   
-     
-
-
     },
   },
 ];
@@ -118,7 +144,6 @@ function Alarmas() {
   var [puerta, setPuerta] = useState(0);
 
   function panico() {
-    
     var status = 0;
     // var fecha = new Date().toLocaleString();
 
@@ -134,7 +159,7 @@ function Alarmas() {
       second: "numeric",
     };
 
-  /*  console.log(
+    /*  console.log(
       fecha.toLocaleDateString("es", options) //en is language option, you may specify..
     );
 */
@@ -160,10 +185,10 @@ function Alarmas() {
     responsive,
     tableBodyHeight,
     tableBodyMaxHeight,
-    onTableChange: (action, state) => {
-      console.log(action);
-      console.dir(state);
-    },
+   // onTableChange: (action, state) => {
+     // console.log(action);
+    //  console.dir(state);
+    //},
 
     textLabels: {
       body: {
@@ -198,24 +223,24 @@ function Alarmas() {
         delete: "Delete",
         deleteAria: "Delete Selected Rows",
       },
-    }
+    },
   };
 
   const [filas, setFilas] = useState([]);
 
   async function getAlarms() {
-    
     const res = await axios.get(URI_alarms);
     setFilas(res.data);
 
     //  setFilas(filas1);
   }
-  socket.on("dualData", (statusSirena, statusPuerta) => {
+   socket.on("dualData", (statusSirena, statusPuerta) => {
     setSirena(statusSirena);
     setPuerta(statusPuerta);
-    console.log("sirena ", sirena);
-    console.log("puerta ", puerta);
+   // console.log("sirena ", sirena);
+   // console.log("puerta ", puerta);
   });
+  
   useEffect(() => {
     getAlarms();
 
