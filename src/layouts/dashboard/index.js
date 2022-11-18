@@ -29,7 +29,7 @@ import { useRef, useState, useEffect } from "react";
 import io from "socket.io-client";
 //deploy
 const socket = io("https://backendjc.herokuapp.com");
-const URI_sonoff = "https://backendjc.herokuapp.com/api/sonoffData";
+//const URI_sonoff = "https://backendjc.herokuapp.com/api/sonoffData";
 
 //debug
 //const socket = io('http://localhost:9000');
@@ -48,7 +48,7 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
   //debug
-  //const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+ // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
   //deploy
   const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData?format=json";
 
@@ -57,7 +57,7 @@ function Dashboard() {
   async function getAlarms() {
     const data = await axios.get(URI_alarms);
 
-    console.log("cantidad de alarmas ", data.data.length);
+   // console.log("cantidad de alarmas ", data.data.length);
     setCount_alarms(data.data.length);
   }
 
@@ -81,21 +81,20 @@ function Dashboard() {
   socket.on("dualData", (statusSirena, statusPuerta) => {
     setSirena(statusSirena);
     setPuerta(statusPuerta);
-    console.log("sirena ", sirena);
-    console.log("puerta ", puerta);
+   // console.log("sirena ", sirena);
+   // console.log("puerta ", puerta);
   });
   socket.on("powData", (voltaje, current, statusPow) => {
-console.log("voltaje = ",voltaje)
+    console.log("voltaje = ", voltaje);
     setVoltaje(voltaje);
     setCurrent(current);
     setStatusPow(statusPow);
   });
   socket.emit("getPow");
   useEffect(() => {
-      
     getAlarms();
-   // getPow();
-  }, []);
+    // getPow();
+  });
 
   /*
   const [current, setCurrent] = React.useState(null);
