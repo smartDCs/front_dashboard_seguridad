@@ -28,7 +28,7 @@ import IconButton from "@mui/material/IconButton";
 
 import io from "socket.io-client";
 
-const socket = io("https://backendjc.herokuapp.com");
+const socket = io("https://backendjc.onrender.com");
 //const socket = io("localhost:9000");
 const muiCache = createCache({
   key: "mui-datatables",
@@ -37,7 +37,7 @@ const muiCache = createCache({
 //debug
 //const URI_alarms = "http://localhost:9000/api/alarmsData";
 //deploy
-const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData";
+const URI_alarms = "https://backendjc.onrender.com/api/alarmsData";
 
 // encabezado de las columnas
 const columns = [

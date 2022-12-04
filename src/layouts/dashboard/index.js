@@ -28,7 +28,8 @@ import { useRef, useState, useEffect } from "react";
 
 import io from "socket.io-client";
 //deploy
-const socket = io("https://backendjc.herokuapp.com");
+
+const socket = io("https://backendjc.onrender.com");
 //const URI_sonoff = "https://backendjc.herokuapp.com/api/sonoffData";
 
 //debug
@@ -48,9 +49,9 @@ function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
   //debug
-  // const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
+  const URI_alarms="http://localhost:9000/api/alarmsData?format=json";
   //deploy
-  const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData?format=json";
+  //const URI_alarms = "https://backendjc.herokuapp.com/api/alarmsData?format=json";
 
   // leer base de datos sonoff
 

@@ -34,7 +34,7 @@ const muiCache = createCache({
 //debug
 //const URI_sonoff = "http://localhost:9000/api/sonoffData";
 //deploy
-const URI_sonoff = "https://backendjc.herokuapp.com/api/sonoffData";
+const URI_sonoff = "https://backendjc.onrender.com/api/sonoffData";
 // encabezado de las columnas
 const columns = [
  
