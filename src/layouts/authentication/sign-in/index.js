@@ -18,7 +18,7 @@ import { authenticationService } from "../_services";
 import axios from "axios";
 // Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
-const URI_users = "https://backendjc.herokuapp.com/api/loginUser";
+const URI_users = "https://backendjc.onrender.com/api/loginUser";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,11 +36,10 @@ function SignIn() {
     console.log("User: ", email);
     console.log("Password: ", password);
     //  setFilas(filas1);
-const params={
-  email: email, 
-  password: password 
-}
-    const res = await axios.get(URI_users);
+//llamamos a la api para ver si el usuario existe
+
+
+    const res = await axios.get(URI_users+'?email='+email+"&password="+password);
 
     console.log("res:::: ", res.data);
   }
