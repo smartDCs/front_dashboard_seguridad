@@ -19,6 +19,7 @@ import axios from "axios";
 // Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 const URI_users = "https://backendjc.onrender.com/api/loginUser";
+//const URI_users = "http://localhost:9000/api/loginUser";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,17 +32,18 @@ function SignIn() {
   }
   //leer la base de datos usuario
   async function getUser(email, password) {
-    // const res = await axios.get(URI_alarms);
-    //setFilas(res.data);
-    console.log("User: ", email);
-    console.log("Password: ", password);
-    //  setFilas(filas1);
-//llamamos a la api para ver si el usuario existe
+    
 
+    const res = await axios.get(URI_users,{params:{email:email,password:password}});
 
-    const res = await axios.get(URI_users+'?email='+email+"&password="+password);
-
-    console.log("res:::: ", res.data);
+    //console.log("res:::: ", res.data);
+    if(res.data!=null){
+      alert("Bienvenido "+res.data.name);
+      console.log(res.data);
+    }else{
+      alert("El usuario o contraseña estan incorrectos");
+      
+    }
   }
 
   function login() {
