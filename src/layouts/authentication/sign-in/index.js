@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Switch from "@mui/material/Switch";
@@ -15,7 +16,9 @@ import SoftButton from "components/SoftButton";
 // Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 import { authenticationService } from "../_services";
+
 import axios from "axios";
+import logstatus from "logstatus";
 // Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 const URI_users = "https://backendjc.onrender.com/api/loginUser";
@@ -23,7 +26,7 @@ const URI_users = "https://backendjc.onrender.com/api/loginUser";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(true);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
@@ -33,16 +36,16 @@ function SignIn() {
   //leer la base de datos usuario
   async function getUser(email, password) {
     
-
-    const res = await axios.get(URI_users,{params:{email:email,password:password}});
+    const res = await axios.get(URI_users, { params: { email: email, password: password } });
 
     //console.log("res:::: ", res.data);
-    if(res.data!=null){
-      alert("Bienvenido "+res.data.name);
-      console.log(res.data);
-    }else{
+    if (res.data != null) {
+      alert("Bienvenido " + res.data.name);
+      navigate("/dashboard");
+      logstatus=true;
+    } else {
       alert("El usuario o contraseña estan incorrectos");
-      
+      logstatus=false;
     }
   }
 
