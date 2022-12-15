@@ -95,7 +95,7 @@ const columns = [
             status: 0,
           };
           axios
-            .put("https://backendjc.herokuapp.com/api/alarmsData/" + id, data)
+            .put("https://backendjc.onrender.com/api/alarmsData/" + id, data)
             .then(function (response) {
               // console.log(response.data)
             })
