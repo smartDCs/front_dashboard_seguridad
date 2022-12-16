@@ -32,7 +32,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSetAgremment = () => setAgremment(!agreement);
-const URI_users="https://backendjc.onrender.com/api/usersDash"
+const URI_users="https://backendjc.onrender.com/api/usersDash" // end point
 //const URI_users="http://localhost:9000/api/usersDash"
   async function createUser(name,email, password) {
     
