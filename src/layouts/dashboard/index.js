@@ -136,7 +136,7 @@ function Dashboard() {
                 percentage={{ color: "success", text: current + " A" }}
                 componente={
                   <Link to="/power">
-                    <IconButton fontSize="small" color="success" onClick={() => changeState(2)}>
+                    <IconButton fontSize="small" color="success" onClick={() => changeState(3)}>
                       {" "}
                       <Icon>bolt</Icon>
                     </IconButton>
