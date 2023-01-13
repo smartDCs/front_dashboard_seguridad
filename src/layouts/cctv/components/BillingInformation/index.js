@@ -7,7 +7,7 @@ import React from 'react';
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-
+//iframe para monitorear las camaras
 
 
 function BillingInformation() {
@@ -22,7 +22,6 @@ function BillingInformation() {
       </SoftBox>
       <SoftBox pt={0} pb={3} px={2}>
       <iframe src="https://5533900437b48942.p21.rt3.io" width="100%" height="600" >
-
 </iframe>
        
       </SoftBox>
